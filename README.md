@@ -8,6 +8,7 @@ The robot must autonomously navigate through a cluttered environment and reach a
 - p₁ = [-1.5, -2.9] (≤ 60 s, optimal ≈ 44 s)
 - p₂ = [-3.0, 6.0] (≤ 110 s, optimal ≈ 73 s)
 - p₃ = [5.25, 5.5] (≤ 75 s, optimal ≈ 51 s)
+
 Coordinates are expressed in meters in the Gazebo world frame.
 
 ## Motivation
