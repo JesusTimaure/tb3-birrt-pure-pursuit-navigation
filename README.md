@@ -63,7 +63,7 @@ Given a path:
 
 $`α`$ is the heading error and the control commands are:
 <p align="center">
-  $v=v_$
+  $v=v_r$
   $ω=v*k$
 </p>
 
@@ -72,9 +72,9 @@ This project relies on the official TurtleBot3 ROS packages for simulation, whic
 
 ## Running the simulation
 Launch the main.launch file with 
-```bash
+````
 roslaunch timaure_jesus main.launch
-```
+````
 This will automatically start:
 - Gazebo simulation
 - Custom nodes as
