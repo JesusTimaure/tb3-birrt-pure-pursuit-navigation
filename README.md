@@ -50,7 +50,7 @@ Once connected, the resulting path is extracted and post-processed by the local 
 
 ## Local Planning and Control (Pure Pursuit)
 Given a path:
-- A lookahead point at a "Lookahead distance" L_d is selected
+- A lookahead point at a "Lookahead distance" $`L_d`$ is selected
 - Curvature is computed as:
 _k=(2sin(alpha))/L_d
 
