@@ -63,7 +63,7 @@ Given a path:
 
 $`α`$ is the heading error and the control commands are:
 <p align="center">
-  $v=v_ref$
+  $v=v_$
   $ω=v*k$
 </p>
 
