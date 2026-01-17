@@ -63,16 +63,28 @@ Given a path:
 
 $`α`$ is the heading error and the control commands are:
 <p align="center">
-  v=v_ref
-  ω=v*k
+  $v=v_ref$
+  $ω=v*k$
 </p>
 
 ## Dependencies
+This project relies on the official TurtleBot3 ROS packages for simulation, which must be installed separately
 
-## Execution
+## Running the simulation
+Launch the main.launch file with 
+roslaunch timaure_jesus main.launch
+
+This will automatically start:
+- Gazebo simulation
+- Custom nodes as
+ - Mission Scheduler
+ - Global Planner
+ - Local Planner
+ - Pure Pursuit Controller
+- RViz visualization
 
 ## Results
-
+The times for each segment
 <img width="2313" height="1288" alt="image" src="https://github.com/user-attachments/assets/ac39b70d-9f7f-41b2-aaa3-904364052561" />
 
 <img width="2292" height="1288" alt="image" src="https://github.com/user-attachments/assets/29041fce-0289-4d8b-9930-c56e6d273455" />
