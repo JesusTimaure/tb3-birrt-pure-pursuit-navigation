@@ -27,7 +27,7 @@ The Pure Pursuit controller was selected for local trajectory tracking because:
 The navigation system is organized as a modular ROS pipeline:
 - **Mission Scheduler (Goal Manager Node)**
   - Sends one target waypoint at a time to the planner
-  - Ensures sequental execution of p₁ → p₂ → p₃ and the intermediate waypoints between them
+  - Ensures sequential execution of p₁ → p₂ → p₃ and the intermediate waypoints between them
 - **Global Planner (Bi-RRT Node)**
   - Computes collision-free paths between successive goals
 - **Local Planner Node**
@@ -40,7 +40,7 @@ This structure separates task sequencing, planning, and control, mirroring real-
 ## Navigation Algorithm
 Two trees are grown:
 - One from the current robot pose
-- One from goal position
+- One from the goal position
 
 At each iteration:
 1. Sample a random point
@@ -48,7 +48,7 @@ At each iteration:
 3. Attempt to connect them
 4. Validate collision-free segments
 
-Once connected, the resulting path is extracted and post-processed by the local planner
+Once connected, the resulting path is extracted and post-processed by the local planner.
 
 ## Local Planning and Control (Pure Pursuit)
 Given a path:
@@ -72,8 +72,9 @@ This project relies on the official TurtleBot3 ROS packages for simulation, whic
 
 ## Running the simulation
 Launch the main.launch file with 
+```bash
 roslaunch timaure_jesus main.launch
-
+```
 This will automatically start:
 - Gazebo simulation
 - Custom nodes as
