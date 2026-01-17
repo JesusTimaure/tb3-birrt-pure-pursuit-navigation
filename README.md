@@ -56,11 +56,13 @@ Given a path:
 - Curvature is computed as:
 
 <p align="center">
-$`k={2sin(α)\over L_d}`$
+$k={2sin(α)\over L_d}$
 </p>
 
 $`α`$ is the heading error and the control commands are:
-$`v=v_ref, ω=v*k`$
+<p align="center">
+$v=v_ref, ω=v*k$
+</p>
 
 ## Dependencies
 
