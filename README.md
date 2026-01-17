@@ -35,6 +35,35 @@ The navigation system is organized as a modular ROS pipeline:
   - Outputs velocity commands to the robot
 This structure separates task sequencing, planning, and control, mirroring real-world autonomy pipelines.
 
+## Navigation Algorithm
+Two trees are grown:
+- One from the current robot pose
+- One from goal position
+At each iteration:
+1. Sample a random point
+2. Extend both trees toward the sample
+3. Attempt to connect them
+4. Validate collision-free segments
+
+Once connected, the resulting path is extracted and post-processed by the local planner
+
+## Local Planning and Control (Pure Pursuit)
+One from the current robot pose
+
+One from the goal position
+
+At each iteration:
+
+Sample a random point
+
+Extend both trees toward the sample
+
+Attempt to connect them
+
+Validate collision-free segments
+
+Once connected, the resulting path is extracted and post-processed into intermediate goals.
+
 Ensures sequential execution of 
 
 Global Planner (Modified Bi-RRT Node)
