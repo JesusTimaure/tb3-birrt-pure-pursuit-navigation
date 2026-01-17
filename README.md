@@ -52,7 +52,8 @@ Once connected, the resulting path is extracted and post-processed by the local 
 Given a path:
 - A lookahead point at a "Lookahead distance" $`L_d`$ is selected
 - Curvature is computed as:
-_k=(2sin(alpha))/L_d
+
+$`k=(2sin(alpha))/L_d`$
 
 <img width="918" height="641" alt="image" src="https://github.com/user-attachments/assets/ffaa2063-1a4b-4fd1-bd23-33abd7af1739" />
 
