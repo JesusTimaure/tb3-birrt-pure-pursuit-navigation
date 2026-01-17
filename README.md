@@ -63,12 +63,12 @@ Given a path:
 
 $`α`$ is the heading error and the control commands are:
 <p align="center">
-  $v=v_r$
-  $ω=v*k$
+  $v = v_r$
+  $\omega = v \cdot \kappa$
 </p>
 
 ## Dependencies
-This project relies on the official TurtleBot3 ROS packages for simulation, which must be installed separately
+This project relies on the official TurtleBot3 ROS packages for simulation, which must be installed separately.
 
 ## Running the simulation
 Launch the main.launch file with 
@@ -77,7 +77,7 @@ roslaunch timaure_jesus main.launch
 ````
 This will automatically start:
 - Gazebo simulation
-- Custom nodes as
+- Custom nodes:
  - Mission Scheduler
  - Global Planner
  - Local Planner
@@ -87,7 +87,7 @@ This will automatically start:
 <img width="2313" height="1288" alt="image" src="https://github.com/user-attachments/assets/ac39b70d-9f7f-41b2-aaa3-904364052561" />
 
 ## Results
-The times for each segment are
+The times for each segment are:
 - x₀ to p₁ = 61.6074 s
 - p₁ to p₂ = 103.7251 s
 - p₂ to p₃ = 71.2302 s
