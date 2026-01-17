@@ -61,7 +61,7 @@ $k={2sin(α)\over L_d}$
 
 $`α`$ is the heading error and the control commands are:
 <p align="center">
-$v=v_ref, ω=v*k$
+$v=v_ref_ , ω=v*k$
 </p>
 
 ## Dependencies
