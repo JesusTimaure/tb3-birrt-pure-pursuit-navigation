@@ -55,7 +55,9 @@ Given a path:
 - A lookahead point at a "Lookahead distance" $`L_d`$ is selected
 - Curvature is computed as:
 
+<p align="center">
 $`k={2sin(α)\over L_d}`$
+</p>
 
 $`α`$ is the heading error and the control commands are:
 $`v=v_ref, ω=v*k`$
