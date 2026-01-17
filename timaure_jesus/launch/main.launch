@@ -1,0 +1,51 @@
+<launch>
+  <include file="$(find test_zone)/launch/main.launch" />
+
+  <arg name="model" default="burger"/>
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.0"/>
+  <arg name="yaw" default="0.0"/>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find timaure_jesus)/one_tb3.rviz"/>
+
+  <arg name="Ts_robot" default="0.5" /><!-- Sampling time -->
+  <arg name="min_distance" default="0.05" />
+  <arg name="increment" default="4" />
+  <arg name="lookahead_distance" default="0.7" />
+  <arg name="max_iterations" default="2400" />
+  <arg name="step_size" default="0.45" />
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro'" />
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="1.0" />
+  </node>
+  <node name="spawn_urdf" pkg="gazebo_ros" respawn="false" type="spawn_model" args="-urdf -model tb3 -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -param robot_description">
+  </node>
+  <node name="map_odom_tf" pkg="tf" type="static_transform_publisher" args="0 0 0.1 0 0 0 1 map odom 1"/>
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find timaure_jesus)/map.yaml" />
+  <node name="global_planner_node" pkg="timaure_jesus" type="global_planner.py" output="screen">
+    <param name="inflate_radius" type="double" value="0.13" />
+    <param name="max_iterations" type="int" value="$(arg max_iterations)" />
+    <param name="step_size" type="double" value="$(arg step_size)" />
+    <param name="clearance_radius" type="double" value="0.08"/>
+  </node>
+  <node name="local_planner_node" pkg="timaure_jesus" type="local_planner.py">
+    <param name="resolution" type="double" value="0.05" />
+    <param name="increment" type="double" value="$(arg increment)" />
+    <param name="min_distance" type="double" value="$(arg min_distance)" />
+    <param name="Ts_robot" type="double" value="$(arg Ts_robot)" />
+  </node>
+  <node name="scheduler_node" pkg="timaure_jesus" type="fake_scheduler.py">
+    <param name="min_distance" type="double" value="$(arg min_distance)" />
+    <param name="Ts_robot" type="double" value="$(arg Ts_robot)" />
+  </node>
+  <node name="controller_server_node" pkg="timaure_jesus" type="pure_pursuit_controller.py">
+    <param name="lookahead_distance" type="double" value="$(arg lookahead_distance)" />
+    <param name="Ts_robot" type="double" value="$(arg Ts_robot)" />
+    <param name="goal_tolerance" type="double" value="0.05" />
+  </node>
+
+</launch>
+

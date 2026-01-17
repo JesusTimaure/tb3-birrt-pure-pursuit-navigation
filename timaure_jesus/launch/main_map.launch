@@ -1,0 +1,23 @@
+<launch>
+  <include file="$(find test_zone)/launch/main.launch" />
+
+  <arg name="model" default="waffle"/>
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.0"/>
+  <arg name="yaw" default="0.0"/>
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find timaure_jesus)/one_tb3.rviz"/>
+
+  <arg name="Ts_robot" default="0.5" /><!-- Sampling time -->
+
+  <!-- gridbased_dmpc or turtlebot3_description -->
+  <param name="robot_description" command="$(find xacro)/xacro '$(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro'" />
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="1.0" />
+  </node>
+  <node name="spawn_urdf" pkg="gazebo_ros" respawn="false" type="spawn_model" args="-urdf -model tb3 -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) -param robot_description">
+  </node>
+  <node name="map_odom_tf" pkg="tf" type="static_transform_publisher" args="0 0 0.1 0 0 0 1 map odom 1"/>
+</launch>
