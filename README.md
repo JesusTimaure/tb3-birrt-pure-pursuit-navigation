@@ -39,6 +39,7 @@ This structure separates task sequencing, planning, and control, mirroring real-
 Two trees are grown:
 - One from the current robot pose
 - One from goal position
+
 At each iteration:
 1. Sample a random point
 2. Extend both trees toward the sample
@@ -48,36 +49,12 @@ At each iteration:
 Once connected, the resulting path is extracted and post-processed by the local planner
 
 ## Local Planning and Control (Pure Pursuit)
-One from the current robot pose
+Given a path:
+- A lookahead point at a "Lookahead distance" L_d is selected
+- Curvature is computed as:
+_k=(2sin(alpha))/L_d
 
-One from the goal position
+<img width="918" height="641" alt="image" src="https://github.com/user-attachments/assets/ffaa2063-1a4b-4fd1-bd23-33abd7af1739" />
 
-At each iteration:
+<img width="2313" height="1288" alt="image" src="https://github.com/user-attachments/assets/ac39b70d-9f7f-41b2-aaa3-904364052561" />
 
-Sample a random point
-
-Extend both trees toward the sample
-
-Attempt to connect them
-
-Validate collision-free segments
-
-Once connected, the resulting path is extracted and post-processed into intermediate goals.
-
-Ensures sequential execution of 
-
-Global Planner (Modified Bi-RRT Node)
-
-Computes collision-free paths between successive goals
-
-Generates intermediate waypoints
-
-Local Planner Node
-
-Refines the global path and selects tracking points
-
-Controller Node (Pure Pursuit)
-
-Tracks the local trajectory
-
-Outputs velocity commands to the robot
